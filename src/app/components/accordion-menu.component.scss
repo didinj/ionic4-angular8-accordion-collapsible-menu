@@ -1,0 +1,29 @@
+.submenu {
+    margin-left: 16px;
+    border-left: 2px solid #ccc;
+    padding-left: 12px;
+}
+
+ion-icon {
+    transition: transform 0.2s ease;
+}
+
+ion-icon.rotated {
+    transform: rotate(90deg);
+}
+
+ion-item {
+    --min-height: 48px;
+    font-size: 16px;
+}
+
+:host-context(body.dark) {
+    .submenu {
+        border-left: 2px solid #444;
+    }
+}
+
+ion-label {
+    white-space: normal;
+    word-wrap: break-word;
+}

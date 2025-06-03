@@ -1,61 +1,13 @@
 <ion-app>
-  <ion-split-pane>
-    <ion-menu type="overlay">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list lines="full">
-          <ion-menu-toggle auto-hide="false" class="first-level">
-            <ion-item [routerDirection]="'root'" [routerLink]="['/home']" (click)="clearLevel()">
-              <ion-label><ion-icon name="home"></ion-icon>Home</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-          <ion-item *ngFor="let p of appPages; let i=index;" [routerDirection]="'root'" (click)="toggleLevel1('idx'+i)" [ngClass]="{active: isLevel1Shown('idx'+i)}">
-            <ion-label>
-              <ion-icon [name]="isLevel1Shown('idx'+i) ? 'arrow-dropdown-circle' : 'arrow-dropright-circle'" slot="end"></ion-icon>
-              {{p.name}}
-              <ul *ngIf="isLevel1Shown('idx'+i)" class="level1">
-                <li *ngFor="let i1 of p.item; let j=index;" (click)="toggleLevel2('idx'+i+'idx'+j)" [ngClass]="{active: isLevel2Shown('idx'+i+'idx'+j)}">
-                    <ion-icon [name]="isLevel2Shown('idx'+i+'idx'+j) ? 'arrow-dropdown-circle' : 'arrow-dropright-circle'" slot="end"></ion-icon>
-                  {{i1.name}}
-                  <ul *ngIf="isLevel2Shown('idx'+i+'idx'+j)" class="level2">
-                    <li *ngFor="let i2 of i1.item; let k=index;" (click)="toggleLevel3('idx'+i+'idx'+j+'idx'+k)" [ngClass]="{active: isLevel3Shown('idx'+i+'idx'+j+'idx'+k)}">
-                      <ion-icon [name]="isLevel3Shown('idx'+i+'idx'+j+'idx'+k) ? 'arrow-dropdown-circle' : 'arrow-dropright-circle'" slot="end"></ion-icon>
-                      {{i2.name}}
-                      <ul *ngIf="isLevel3Shown('idx'+i+'idx'+j+'idx'+k)" class="level3">
-                        <li *ngFor="let i3 of i2.item; let l=index;" [routerLink]="[i3.url]">
-                          <ion-menu-toggle auto-hide="false" class="first-level">{{i3.name}}</ion-menu-toggle>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </ion-label>
-            <!-- <ion-list *ngIf="isLevel1Shown('idx'+i)" lines="full">
-              <ion-item *ngFor="let i1 of p.item; let j=index;" (click)="toggleLevel2('idx'+i+'idx'+j)" [ngClass]="{active: isLevel2Shown('idx'+i+'idx'+j)}">
-                <p>{{i1.name}}</p>
-                <ion-list *ngIf="isLevel2Shown('idx'+i+'idx'+j)" lines="full">
-                  <ion-item *ngFor="let i2 of i1.item; let k=index;" (click)="toggleLevel3('idx'+i+'idx'+j+'idx'+k)" [ngClass]="{active: isLevel3Shown('idx'+i+'idx'+j+'idx'+k)}">
-                    <p>{{i2.name}}</p>
-                    <ion-list *ngIf="isLevel3Shown('idx'+i+'idx'+j+'idx'+k)">
-                      <ion-menu-toggle auto-hide="false">
-                        <ion-item *ngFor="let i3 of i2.item; let l=index;" [routerLink]="[i3.url]">
-                          {{i3.name}}
-                        </ion-item>
-                      </ion-menu-toggle>
-                    </ion-list>
-                  </ion-item>
-                </ion-list>
-              </ion-item>
-            </ion-list> -->
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
-  </ion-split-pane>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Multilevel Accordion Menu
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <app-accordion-menu [menus]="menus"></app-accordion-menu>
+  </ion-content>
 </ion-app>

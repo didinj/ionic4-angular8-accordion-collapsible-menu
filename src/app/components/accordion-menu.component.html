@@ -1,0 +1,19 @@
+<ion-list>
+  <ng-container *ngFor="let menu of menus; let i = index">
+    <ion-item
+        button
+        [color]="isSelected(menu.title) ? 'primary' : ''"
+        (click)="toggle(i); select(menu.title)">
+      <ion-label>{{ menu.title }}</ion-label>
+      <ion-icon
+        slot="end"
+        [name]="isActive(i) ? 'chevron-down' : 'chevron-forward'"
+        [class.rotated]="isActive(i)">
+      </ion-icon>
+    </ion-item>
+
+    <div *ngIf="isActive(i)" class="submenu">
+      <app-accordion-menu *ngIf="menu.children" [menus]="menu.children"></app-accordion-menu>
+    </div>
+  </ng-container>
+</ion-list>

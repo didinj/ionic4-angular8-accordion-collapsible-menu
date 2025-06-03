@@ -1,5 +1,7 @@
 {
-  "name": "ionic-angular-accordion",
-  "integrations": {},
-  "type": "angular"
+  "name": "multilevel-menu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
 }
